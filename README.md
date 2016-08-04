@@ -1,2 +1,3 @@
-# ma_alumni_api
+#MA Alumni API
+
 The API which powers the Makers Alumni info application
