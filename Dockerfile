@@ -15,3 +15,4 @@ ADD . $APP_HOME
 
 RUN mix local.hex --force
 RUN mix deps.get --force
+RUN mix local.rebar --force

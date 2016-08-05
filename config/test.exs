@@ -15,5 +15,5 @@ config :ma_alumni_api, MaAlumniApi.Repo,
   username: "postgres",
   password: "postgres",
   database: "ma_alumni_api_test",
-  hostname: "localhost",
+  hostname: "api_db",
   pool: Ecto.Adapters.SQL.Sandbox
