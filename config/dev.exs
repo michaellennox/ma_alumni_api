@@ -27,5 +27,5 @@ config :ma_alumni_api, MaAlumniApi.Repo,
   username: "postgres",
   password: "postgres",
   database: "ma_alumni_api_dev",
-  hostname: "localhost",
+  hostname: "api_db",
   pool_size: 10
