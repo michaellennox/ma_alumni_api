@@ -11,5 +11,6 @@ defmodule MaAlumniApi.Router do
     pipe_through :api
 
     resources "/graduates", GraduateController, only: [:create, :show], param: "name"
+    resources "/job_surveys", JobSurveyController, only: [:index, :create, :show]
   end
 end
