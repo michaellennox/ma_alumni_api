@@ -2,188 +2,40 @@
 title: API Reference
 
 language_tabs:
-  - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='https://github.com/michaellennox/ma_alumni'>Contribute on Github</a>
+  - <a href='https://www.pivotaltracker.com/n/workspaces/639069'>Product Roadmap on Pivotal</a>
 
 includes:
-  - errors
+  - graduates
+  - job_surveys
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the MA Alumni API! The API powering our super-application which is intended to replace data gathering via google forms and docs with a wonderful JS and Elixir/Phoenix solution which we can extend, grow and use to analyse the information that graduates provide us over a much wider scope.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+### Anonymity
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+All graduate data should be anonymised and there is no link between the data a user provides and their name except on the initial POST request to save form data. No GET requests should combine the graduate's name with any sort of information they have submitted to us.
 
-# Authentication
+### In Development
 
-> To authorize, use this code:
+The API is currently in active development and as such, breaking changes may be introduced.
 
-```ruby
-require 'kittn'
+### Get Involved!
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+We are actively looking for people to contribute to the application, our github repository can be found [here](https://github.com/michaellennox/ma_alumni) and our kanban boards can be found at [here](https://www.pivotaltracker.com/n/workspaces/639069).
 
-```python
-import kittn
+Have some ideas of great visualisations or data that would be awesome for us to collect? [Raise an issue on github](https://github.com/michaellennox/ma_alumni/issues), [create a ticket on pivotal](https://www.pivotaltracker.com/n/workspaces/639069) or even better, write it and open a pull request!
 
-api = kittn.authorize('meowmeowmeow')
-```
+# JSON API Compliant
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+The goal of this API is to be compliant with the schemas outlined by [JSON API](http://jsonapi.org/) in all cases apart from ones that would risk the anonymity of data. All requests to the API should follow the JSON API schema.
 
-```javascript
-const kittn = require('kittn');
+Please note that all requests to the API should use the JSON API mime type `application/vnd.api+json`.
 
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
+To find a list of clients which make interacting with a JSON API compliant api a smooth doddle please visit [jsonapi.org/implementations](http://jsonapi.org/implementations/).
