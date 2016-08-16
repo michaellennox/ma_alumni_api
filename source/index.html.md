@@ -34,7 +34,7 @@ Have some ideas of great visualisations or data that would be awesome for us to 
 
 # JSON API Compliant
 
-The goal of this API is to be compliant with the schemas outlined by [JSON API](http://jsonapi.org/) in all cases apart from ones that would risk the anonymity of data. All requests to the API should follow the JSON API schema.
+The goal of this API is intended to be compliant with the schemas outlined by [JSON API](http://jsonapi.org/) in all cases apart from ones that would risk the anonymity of data. All requests to the API should follow the JSON API schema.
 
 Please note that all requests to the API should use the JSON API mime type `application/vnd.api+json`.
 

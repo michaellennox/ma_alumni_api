@@ -63,7 +63,7 @@ Please note this endpoint is not JSON API compliant, the Location header returne
 
 `POST http://example.com/graduates`
 
-### Parameters
+### Body Parameters
 
 | Key | Required | Description |
 |-----|----------|-------------|
@@ -75,8 +75,49 @@ Please note this endpoint is not JSON API compliant, the Location header returne
 
 ## Get a Graduate
 
+> Example Request
+
+```
+GET /graduates/Flying%20Dinosaur HTTP/1.1
+Accept: application/vnd.api+json
+```
+
+> The above request will give the following response if Flying Dinosaur is in the DB
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+```json
+{
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "data": {
+    "type": "graduate",
+    "id": "1",
+    "attributes": {
+      "name": "Flying Dinosaur"
+    }
+  }
+}
+```
+
 This endpoint should be used to verify that a graduate exists after they have given you their name and to recover their graduate_id which is then used to associate survey data with their anonymous profile.
 
 ### HTTP Request
 
 `GET http://example.com/graduates/:name`
+
+### Returned Metadata
+
+| Key | Description |
+|-----|-------------|
+| type | the object type, always "graduate" |
+| id | the database ID of the graduate, must be used when submitting a form for that graduate |
+
+### Returned Attributes
+
+| Key | Description |
+|-----|-------------|
+| name | The graduate's first and last name |
