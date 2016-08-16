@@ -136,7 +136,7 @@
 
 <h1 id="json-api-compliant">JSON API Compliant</h1>
 
-<p>The goal of this API is to be compliant with the schemas outlined by <a href="http://jsonapi.org/">JSON API</a> in all cases apart from ones that would risk the anonymity of data. All requests to the API should follow the JSON API schema.</p>
+<p>The goal of this API is intended to be compliant with the schemas outlined by <a href="http://jsonapi.org/">JSON API</a> in all cases apart from ones that would risk the anonymity of data. All requests to the API should follow the JSON API schema.</p>
 
 <p>Please note that all requests to the API should use the JSON API mime type <code class="prettyprint">application/vnd.api+json</code>.</p>
 
@@ -205,7 +205,7 @@ Please note this endpoint is not JSON API compliant, the Location header returne
 
 <p><code class="prettyprint">POST http://example.com/graduates</code></p>
 
-<h3 id="parameters">Parameters</h3>
+<h3 id="body-parameters">Body Parameters</h3>
 
 <table><thead>
 <tr>
@@ -243,11 +243,70 @@ Please note this endpoint is not JSON API compliant, the Location header returne
 
 <h2 id="get-a-graduate">Get a Graduate</h2>
 
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET /graduates/Flying%20Dinosaur HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+
+<blockquote>
+<p>The above request will give the following response if Flying Dinosaur is in the DB</p>
+</blockquote>
+<pre class="highlight plaintext"><code>HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"jsonapi"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"graduate"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flying Dinosaur"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <p>This endpoint should be used to verify that a graduate exists after they have given you their name and to recover their graduate_id which is then used to associate survey data with their anonymous profile.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET http://example.com/graduates/:name</code></p>
+
+<h3 id="returned-metadata">Returned Metadata</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>the object type, always &ldquo;graduate&rdquo;</td>
+</tr>
+<tr>
+<td>id</td>
+<td>the database ID of the graduate, must be used when submitting a form for that graduate</td>
+</tr>
+</tbody></table>
+
+<h3 id="returned-attributes">Returned Attributes</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>The graduate&rsquo;s first and last name</td>
+</tr>
+</tbody></table>
 
           <h1 id="job-surveys">Job Surveys</h1>
 
